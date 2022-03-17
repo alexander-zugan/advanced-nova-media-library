@@ -2,12 +2,12 @@
 
 namespace Ebess\AdvancedNovaMediaLibrary\Fields;
 
+use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Field;
 use Spatie\MediaLibrary\HasMedia;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Symfony\Component\HttpFoundation\FileBag;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Illuminate\Support\Str;
 
 /**
  * @mixin Media
@@ -64,11 +64,15 @@ trait HandlesCustomPropertiesTrait
 
         /** @var Field $field */
         foreach ($this->customPropertiesFields as $field) {
+
             $targetAttribute = "custom_properties->{$field->attribute}";
             $requestAttribute = "__media-custom-properties__.{$collection}.{$index}.{$field->attribute}";
 
-            if (Str::startsWith($field->attribute, 'mm_tag_')) {
-                $media->$field->attribute = $request->$requestAttribute;
+            $modelAttribute = $field->attribute;
+            $mm_tag = Str::startsWith($modelAttribute, 'mm_tag_');
+            if ($mm_tag) {
+                $modelValue = $request->$requestAttribute;
+                $media->$modelAttribute = $modelValue;
             }
 
             $field->fillInto($request, $media, $targetAttribute, $requestAttribute);
