@@ -7,6 +7,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Symfony\Component\HttpFoundation\FileBag;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Illuminate\Support\Str;
 
 /**
  * @mixin Media
@@ -45,7 +46,7 @@ trait HandlesCustomPropertiesTrait
                 return $value instanceof UploadedFile || $value instanceof FileBag;
             })
             ->each(function ($id, int $index) use ($request, $mediaItems, $collection) {
-                if (! $media = $mediaItems->where('id', $id)->first()) {
+                if (!$media = $mediaItems->where('id', $id)->first()) {
                     return;
                 }
 
@@ -65,6 +66,10 @@ trait HandlesCustomPropertiesTrait
         foreach ($this->customPropertiesFields as $field) {
             $targetAttribute = "custom_properties->{$field->attribute}";
             $requestAttribute = "__media-custom-properties__.{$collection}.{$index}.{$field->attribute}";
+
+            if (Str::startsWith($field->attribute, 'mm_tag_')) {
+                $media->$field->attribute = $request->$requestAttribute;
+            }
 
             $field->fillInto($request, $media, $targetAttribute, $requestAttribute);
         }
