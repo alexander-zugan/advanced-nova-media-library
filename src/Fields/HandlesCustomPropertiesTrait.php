@@ -73,9 +73,9 @@ trait HandlesCustomPropertiesTrait
             if ($mm_tag) {
                 $modelValue = $request->$requestAttribute;
                 $media->$modelAttribute = $modelValue;
+            } else {
+                $field->fillInto($request, $media, $targetAttribute, $requestAttribute);
             }
-
-            $field->fillInto($request, $media, $targetAttribute, $requestAttribute);
         }
 
         $media->save();
