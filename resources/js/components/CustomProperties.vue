@@ -1,18 +1,16 @@
 <template>
-  <transition name="fade">
-    <CustomPropertiesModal
-      :fields="filledFields"
-      @close="handleClose"
-      @update="handleUpdate"
-    />
-  </transition>
+  <CustomPropertiesModal
+    @close="handleClose"
+    :fields="filledFields"
+    @update="handleUpdate"
+  />
 </template>
 
 <script>
-import CustomPropertiesModal from './CustomPropertiesModal'
-import tap from 'lodash/tap'
-import get from 'lodash/get'
-import set from 'lodash/set'
+import CustomPropertiesModal from "./CustomPropertiesModal";
+import tap from "lodash/tap";
+import get from "lodash/get";
+import set from "lodash/set";
 
 export default {
   props: {
@@ -33,15 +31,18 @@ export default {
   data() {
     return {
       image: JSON.parse(JSON.stringify(this.modelValue)),
-    }
+    };
   },
 
   computed: {
     filledFields() {
-      return JSON.parse(JSON.stringify(this.fields)).map(field => tap(field, field => {
-        field.value = this.getProperty(field.attribute)
-      }))
-    }
+      console.log(this.fields);
+      return JSON.parse(JSON.stringify(this.fields)).map((field) =>
+        tap(field, (field) => {
+          field.value = this.getProperty(field.attribute);
+        })
+      );
+    },
   },
 
   methods: {
@@ -51,21 +52,21 @@ export default {
 
     handleUpdate(formData) {
       for (let [property, value] of formData.entries()) {
-        this.setProperty(property, value)
+        this.setProperty(property, value);
       }
 
-      this.$emit('update:modelValue', this.image)
+      this.$emit("update:modelValue", this.image);
 
-      this.handleClose()
+      this.handleClose();
     },
 
     getProperty(property) {
-      return get(this.image, `custom_properties.${property}`)
+      return get(this.image, `custom_properties.${property}`);
     },
 
     setProperty(property, value) {
-      set(this.image, `custom_properties.${property}`, value)
+      set(this.image, `custom_properties.${property}`, value);
     },
-  }
-}
+  },
+};
 </script>

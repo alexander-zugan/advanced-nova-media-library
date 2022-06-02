@@ -490,6 +490,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       mouseOver: false,
+      currentImageId: null,
       cropImageQueue: [],
       images: this.modelValue || [],
       customPropertiesImageIndex: null,
@@ -547,6 +548,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     openModal: function openModal(image) {
       console.log(image, image.id);
       var index = image.id;
+      this.currentImageId = index;
       this.customPropertiesModalOpen = true;
       this.customPropertiesImageIndex = index;
     },
@@ -1872,7 +1874,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, null, 40
       /* PROPS, HYDRATE_EVENTS */
-      , ["image", "field", "editable", "removable", "onRemove", "is-custom-properties-editable"])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <CustomPropertiesModal\n            @close=\"handleClose\"\n            :fields=\"filledFields\"\n            @update=\"handleUpdate\"\n          /> "), $data.customPropertiesImageIndex !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_CustomProperties, {
+      , ["image", "field", "editable", "removable", "onRemove", "is-custom-properties-editable"])), $data.customPropertiesImageIndex !== null && $data.currentImageId == element.id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_CustomProperties, {
         key: 0,
         modelValue: $data.images[index],
         "onUpdate:modelValue": function onUpdateModelValue($event) {
