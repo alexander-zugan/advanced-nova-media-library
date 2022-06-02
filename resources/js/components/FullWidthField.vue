@@ -1,46 +1,49 @@
 <template>
-  <field-wrapper>
+  <FieldWrapper>
     <div class="py-6">
       <div class="px-8">
-        <form-label :for="field.attribute" :class="{
-                      'mb-2': field.helpText && showHelpText
-                  }">
+        <FormLabel
+          :for="field.attribute"
+          :class="{
+            'mb-2': field.helpText && showHelpText,
+          }"
+        >
           {{ fieldLabel }}&nbsp;<span
             v-if="field.required"
             class="text-danger text-sm"
-            >{{ __('*') }}</span
+            >{{ __("*") }}</span
           >
-        </form-label>
+        </FormLabel>
 
-        <help-text :show-help-text="showHelpText">
+        <HelpText :show-help-text="showHelpText">
           {{ field.helpText }}
-        </help-text>
+        </HelpText>
       </div>
 
-      <slot name="field"/>
+      <slot name="field" />
     </div>
-  </field-wrapper>
+  </FieldWrapper>
 </template>
 
 <script>
-  // todo: extend from `default-field` somehow
-  export default {
-    props: {
-      field: { type: Object, required: true },
-      fieldName: { type: String },
-      showHelpText: { type: Boolean, default: true },
-    },
+// todo: extend from `default-field` somehow
+export default {
+  props: {
+    field: { type: Object, required: true },
+    fieldName: { type: String },
+    showHelpText: { type: Boolean, default: true },
+  },
 
-    computed: {
-      fieldLabel() {
-        // If the field name is purposefully an empty string, then
-        // let's show it as such
-        if (this.fieldName === '') {
-          return ''
-        }
+  computed: {
+    fieldLabel() {
+      // If the field name is purposefully an empty string, then
+      // let's show it as such
+      if (this.fieldName === "") {
+        return "";
+      }
 
-        return this.fieldName || this.field.singularLabel || this.field.name
-      },
+      return this.fieldName || this.field.singularLabel || this.field.name;
     },
-  };
+  },
+};
 </script>
