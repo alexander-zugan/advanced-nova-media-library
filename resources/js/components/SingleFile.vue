@@ -45,7 +45,6 @@ export default {
   },
   computed: {
     downloadUrl() {
-      console.log(this.isCustomPropertiesEditable);
       return this.image.id
         ? `/nova-vendor/ebess/advanced-nova-media-library/download/${this.image.id}`
         : null;
