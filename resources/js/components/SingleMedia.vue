@@ -49,6 +49,9 @@
     </div>
     <img :src="src" :alt="image.name" ref="image" class="gallery-image" />
     <div v-if="field.showStatistics" class="statistics my-1">
+      <div class="type">
+        {{ mimeType }}
+      </div>
       <div v-if="size" class="size">
         <strong>{{ size }}</strong>
       </div>
@@ -59,9 +62,6 @@
         <strong>{{ aspectRatio }}</strong> (<i>{{ ratio }}</i
         >)
       </div>
-    </div>
-    <div v-if="field.showStatistics" class="type my-1">
-      {{ mimeType }}
     </div>
   </GalleryItem>
 </template>
@@ -230,7 +230,8 @@ export default {
 </script>
 
 <style lang="scss">
-$bg-color: #e8f5fb;
+$bg-color-200: rgba(var(--colors-primary-200));
+$bg-color: #f9f9f9;
 $item-max-size: 150px;
 $border-radius: 10px;
 
@@ -244,7 +245,7 @@ $border-radius: 10px;
     }
 
     &.show-statistics {
-      padding-top: 22px;
+      padding-bottom: 10px;
       padding-bottom: 43px;
       height: #{$item-max-size + 23px};
     }
@@ -283,12 +284,11 @@ $border-radius: 10px;
       object-fit: contain;
       display: block;
       max-height: 100%;
-      border-radius: $border-radius;
     }
 
     .statistics,
     .type {
-      position: absolute;
+      // position: absolute;
       left: 0;
       width: 100%;
       font-size: 0.75rem;
@@ -309,7 +309,7 @@ $border-radius: 10px;
     }
 
     .type {
-      top: 3px;
+      top: -20px;
     }
   }
 

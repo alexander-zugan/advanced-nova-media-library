@@ -21,7 +21,17 @@
           :first-error="firstError"
         />
 
-        <div v-if="field.existingMedia">
+        <HelpText class="mt-2 help-text-error" v-if="hasError">
+          {{ firstError }}
+        </HelpText>
+
+        <HelpText
+          class="help-text mt-2"
+          v-if="showHelpText"
+          v-html="field.helpText"
+        />
+
+        <span v-if="field.existingMedia">
           <OutlineButton
             type="button"
             class="mt-2"
@@ -34,16 +44,7 @@
             @close="existingMediaOpen = false"
             @select="addExistingItem"
           />
-        </div>
-        <HelpText class="mt-2 help-text-error" v-if="hasError">
-          {{ firstError }}
-        </HelpText>
-
-        <HelpText
-          class="help-text mt-2"
-          v-if="showHelpText"
-          v-html="field.helpText"
-        />
+        </span>
       </div>
     </template>
   </component>

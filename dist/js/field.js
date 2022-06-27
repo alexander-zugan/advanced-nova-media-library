@@ -1692,13 +1692,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, ['name' in $props.item ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h4", {
     key: 0,
-    "class": "truncate h-4 mb-1 font-bold truncate",
+    "class": "truncate h-4 mb-1 font-bold",
     title: $props.item.name
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.name), 9
   /* TEXT, PROPS */
   , _hoisted_5)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), 'file_name' in $props.item ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h5", {
     key: 1,
-    "class": "truncate text-gray-600 text-xs truncate",
+    "class": "truncate text-gray-600 text-xs",
     title: $props.item.file_name
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.file_name), 9
   /* TEXT, PROPS */
@@ -2096,27 +2096,26 @@ var _hoisted_4 = {
   "class": "statistics my-1"
 };
 var _hoisted_5 = {
+  "class": "type"
+};
+var _hoisted_6 = {
   key: 0,
   "class": "size"
 };
-var _hoisted_6 = {
+var _hoisted_7 = {
   "class": "dimensions"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" px ");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" px ");
 
-var _hoisted_8 = {
+var _hoisted_9 = {
   "class": "ratio"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" (");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" (");
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(") ");
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(") ");
 
-var _hoisted_11 = {
-  key: 1,
-  "class": "type my-1"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Icon");
 
@@ -2198,17 +2197,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "gallery-image"
       }, null, 8
       /* PROPS */
-      , _hoisted_3), $props.field.showStatistics ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [_ctx.size ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.size), 1
+      , _hoisted_3), $props.field.showStatistics ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.mimeType), 1
       /* TEXT */
-      )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.width) + "×" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.height), 1
+      ), _ctx.size ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.size), 1
       /* TEXT */
-      ), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.aspectRatio), 1
+      )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.width) + "×" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.height), 1
       /* TEXT */
-      ), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.ratio), 1
+      ), _hoisted_8]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.aspectRatio), 1
       /* TEXT */
-      ), _hoisted_10])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.field.showStatistics ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.mimeType), 1
+      ), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.ratio), 1
       /* TEXT */
-      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+      ), _hoisted_11])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
     }),
     _: 1
     /* STABLE */
@@ -2277,16 +2276,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 
 var _hoisted_1 = {
-  key: 1
+  key: 3
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Gallery = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Gallery");
 
+  var _component_HelpText = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("HelpText");
+
   var _component_OutlineButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("OutlineButton");
 
   var _component_ExistingMedia = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ExistingMedia");
-
-  var _component_HelpText = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("HelpText");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)((0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveDynamicComponent)($props.field.fullSize ? 'FullWidthField' : 'DefaultField'), {
     field: $props.field,
@@ -2315,7 +2314,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "first-error": _ctx.firstError
       }, null, 8
       /* PROPS */
-      , ["modelValue", "editable", "removable", "field", "multiple", "uploads-to-vapor", "has-error", "first-error"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.field.existingMedia ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_OutlineButton, {
+      , ["modelValue", "editable", "removable", "field", "multiple", "uploads-to-vapor", "has-error", "first-error"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.hasError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_HelpText, {
+        key: 1,
+        "class": "mt-2 help-text-error"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.firstError), 1
+          /* TEXT */
+          )];
+        }),
+        _: 1
+        /* STABLE */
+
+      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.showHelpText ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_HelpText, {
+        key: 2,
+        "class": "help-text mt-2",
+        innerHTML: $props.field.helpText
+      }, null, 8
+      /* PROPS */
+      , ["innerHTML"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.field.existingMedia ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_OutlineButton, {
         type: "button",
         "class": "mt-2",
         onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
@@ -2338,25 +2355,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onSelect: $options.addExistingItem
       }, null, 8
       /* PROPS */
-      , ["open", "onSelect"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.hasError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_HelpText, {
-        key: 2,
-        "class": "mt-2 help-text-error"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.firstError), 1
-          /* TEXT */
-          )];
-        }),
-        _: 1
-        /* STABLE */
-
-      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.showHelpText ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_HelpText, {
-        key: 3,
-        "class": "help-text mt-2",
-        innerHTML: $props.field.helpText
-      }, null, 8
-      /* PROPS */
-      , ["innerHTML"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2
+      , ["open", "onSelect"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2
       /* CLASS */
       )];
     }),
@@ -3682,7 +3681,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".gallery.editable .gallery-item {\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n.gallery .gallery-item {\n  float: left;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  position: relative;\n  border-radius: 10px;\n  background-color: #e8f5fb;\n}\n.gallery .gallery-item .gallery-item-info {\n  display: flex;\n  background-color: rgba(232, 245, 251, 0.8);\n  border-radius: 10px;\n  z-index: 10;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".gallery.editable .gallery-item {\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n.gallery .gallery-item {\n  float: left;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  position: relative;\n  border-radius: 10px;\n  background-color: rgba(var(--colors-primary-200));\n}\n.gallery .gallery-item .gallery-item-info {\n  display: flex;\n  background-color: rgba(249, 249, 249, 0.8);\n  z-index: 10;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3730,7 +3729,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".gallery .gallery-item-image.gallery-item {\n  width: 150px;\n  height: 150px;\n}\n.gallery .gallery-item-image.gallery-item:hover .gallery-item-info {\n  display: flex;\n}\n.gallery .gallery-item-image.gallery-item.show-statistics {\n  padding-top: 22px;\n  padding-bottom: 43px;\n  height: 173px;\n}\n.gallery .gallery-item-image.gallery-item .gallery-item-info {\n  display: none;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  background-color: rgba(232, 245, 251, 0.8);\n  border-radius: 10px;\n  position: absolute;\n  z-index: 10;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.gallery .gallery-item-image.gallery-item .gallery-item-info .preview {\n  color: var(--colors-black);\n}\n.gallery .gallery-item-image.gallery-item .gallery-item-info .delete {\n  right: 10px;\n  color: rgb(var(--colors-red-500));\n}\n.gallery .gallery-item-image.gallery-item .gallery-item-info .crop {\n  left: 10px;\n  top: auto;\n  bottom: 10px;\n}\n.gallery .gallery-item-image.gallery-item .gallery-image {\n  -o-object-fit: contain;\n     object-fit: contain;\n  display: block;\n  max-height: 100%;\n  border-radius: 10px;\n}\n.gallery .gallery-item-image.gallery-item .statistics,\n.gallery .gallery-item-image.gallery-item .type {\n  position: absolute;\n  left: 0;\n  width: 100%;\n  font-size: 0.75rem;\n  line-height: 0.95;\n  text-align: center;\n}\n.gallery .gallery-item-image.gallery-item .statistics {\n  bottom: 1px;\n}\n.gallery .gallery-item-image.gallery-item .statistics .dimensions {\n  font-size: 0.675rem;\n}\n.gallery .gallery-item-image.gallery-item .statistics .ratio {\n  font-size: 0.6rem;\n}\n.gallery .gallery-item-image.gallery-item .type {\n  top: 3px;\n}\n.gallery .icon {\n  cursor: pointer;\n  position: absolute;\n  top: 10px;\n  color: rgb(var(--colors-black));\n}\n.gallery .edit {\n  right: 30px;\n}\n.gallery .download {\n  left: 10px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".gallery .gallery-item-image.gallery-item {\n  width: 150px;\n  height: 150px;\n}\n.gallery .gallery-item-image.gallery-item:hover .gallery-item-info {\n  display: flex;\n}\n.gallery .gallery-item-image.gallery-item.show-statistics {\n  padding-bottom: 10px;\n  padding-bottom: 43px;\n  height: 173px;\n}\n.gallery .gallery-item-image.gallery-item .gallery-item-info {\n  display: none;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  background-color: rgba(249, 249, 249, 0.8);\n  border-radius: 10px;\n  position: absolute;\n  z-index: 10;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.gallery .gallery-item-image.gallery-item .gallery-item-info .preview {\n  color: var(--colors-black);\n}\n.gallery .gallery-item-image.gallery-item .gallery-item-info .delete {\n  right: 10px;\n  color: rgb(var(--colors-red-500));\n}\n.gallery .gallery-item-image.gallery-item .gallery-item-info .crop {\n  left: 10px;\n  top: auto;\n  bottom: 10px;\n}\n.gallery .gallery-item-image.gallery-item .gallery-image {\n  -o-object-fit: contain;\n     object-fit: contain;\n  display: block;\n  max-height: 100%;\n}\n.gallery .gallery-item-image.gallery-item .statistics,\n.gallery .gallery-item-image.gallery-item .type {\n  left: 0;\n  width: 100%;\n  font-size: 0.75rem;\n  line-height: 0.95;\n  text-align: center;\n}\n.gallery .gallery-item-image.gallery-item .statistics {\n  bottom: 1px;\n}\n.gallery .gallery-item-image.gallery-item .statistics .dimensions {\n  font-size: 0.675rem;\n}\n.gallery .gallery-item-image.gallery-item .statistics .ratio {\n  font-size: 0.6rem;\n}\n.gallery .gallery-item-image.gallery-item .type {\n  top: -20px;\n}\n.gallery .icon {\n  cursor: pointer;\n  position: absolute;\n  top: 10px;\n  color: rgb(var(--colors-black));\n}\n.gallery .edit {\n  right: 30px;\n}\n.gallery .download {\n  left: 10px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

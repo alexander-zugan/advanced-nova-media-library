@@ -17,14 +17,14 @@
     </div>
     <div class="p-3">
       <h4
-        class="truncate h-4 mb-1 font-bold truncate"
+        class="truncate h-4 mb-1 font-bold"
         v-if="'name' in item"
         :title="item.name"
       >
         {{ item.name }}
       </h4>
       <h5
-        class="truncate text-gray-600 text-xs truncate"
+        class="truncate text-gray-600 text-xs"
         v-if="'file_name' in item"
         :title="item.file_name"
       >

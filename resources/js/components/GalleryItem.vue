@@ -11,7 +11,8 @@ export default {
 </script>
 
 <style lang="scss">
-$bg-color: #e8f5fb;
+$bg-color-200: rgba(var(--colors-primary-200));
+$bg-color: #f9f9f9;
 $border-radius: 10px;
 
 .gallery {
@@ -28,12 +29,11 @@ $border-radius: 10px;
     justify-content: center;
     position: relative;
     border-radius: $border-radius;
-    background-color: $bg-color;
+    background-color: $bg-color-200;
 
     .gallery-item-info {
       display: flex;
       background-color: transparentize($bg-color, 0.2);
-      border-radius: $border-radius;
       z-index: 10;
     }
   }
