@@ -386,6 +386,7 @@ export default {
 
 <style lang="scss">
 .gallery {
+  margin-top: 5px;
   width: 100%;
   display: block;
   &.editable {

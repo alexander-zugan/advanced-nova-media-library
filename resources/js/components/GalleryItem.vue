@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss">
-$bg-color-200: rgba(var(--colors-primary-200));
+$bg-color-200: rgba(var(--colors-primary-200), 0.4);
 $bg-color: #f9f9f9;
 $border-radius: 10px;
 

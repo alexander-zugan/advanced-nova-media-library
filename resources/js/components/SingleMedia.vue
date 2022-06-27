@@ -48,10 +48,7 @@
       </a>
     </div>
     <img :src="src" :alt="image.name" ref="image" class="gallery-image" />
-    <div v-if="field.showStatistics" class="statistics my-1">
-      <div class="type">
-        {{ mimeType }}
-      </div>
+    <div v-if="field.showStatistics" class="statistics mt-2 mb-1">
       <div v-if="size" class="size">
         <strong>{{ size }}</strong>
       </div>
@@ -62,6 +59,9 @@
         <strong>{{ aspectRatio }}</strong> (<i>{{ ratio }}</i
         >)
       </div>
+    </div>
+    <div v-if="field.showStatistics" class="type">
+      {{ mimeType }}
     </div>
   </GalleryItem>
 </template>
@@ -246,8 +246,8 @@ $border-radius: 10px;
 
     &.show-statistics {
       padding-bottom: 10px;
-      padding-bottom: 43px;
-      height: #{$item-max-size + 23px};
+      padding-bottom: 10px;
+      height: #{$item-max-size + 60px};
     }
 
     .gallery-item-info {
@@ -284,6 +284,7 @@ $border-radius: 10px;
       object-fit: contain;
       display: block;
       max-height: 100%;
+      border-radius: $border-radius;
     }
 
     .statistics,
