@@ -8,7 +8,7 @@
     <template #field>
       <div :class="{ 'px-8 pt-6': field.fullSize }">
         <Gallery
-          shallowRef="gallery"
+          ref="gallery"
           v-if="hasSetInitialValue"
           v-model="value"
           :editable="!field.readonly"

@@ -62,7 +62,7 @@
       <input
         :id="`__media__${field.attribute}`"
         :multiple="multiple"
-        shallowRef="file"
+        ref="file"
         class="form-file-input"
         type="file"
         :disabled="uploading"

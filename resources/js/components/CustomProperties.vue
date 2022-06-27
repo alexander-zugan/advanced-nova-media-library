@@ -36,7 +36,6 @@ export default {
 
   computed: {
     filledFields() {
-      console.log(this.fields);
       return JSON.parse(JSON.stringify(this.fields)).map((field) =>
         tap(field, (field) => {
           field.value = this.getProperty(field.attribute);
@@ -47,7 +46,7 @@ export default {
 
   methods: {
     handleClose() {
-      this.$emit('close')
+      this.$emit("close");
     },
 
     handleUpdate(formData) {
