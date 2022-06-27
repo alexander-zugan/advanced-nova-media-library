@@ -19,4 +19,9 @@ class Files extends Images
 
         $this->hideFromIndex();
     }
+
+    public function fullSize(): self
+    {
+        return $this->withMeta(['fullSize' => true]);
+    }
 }

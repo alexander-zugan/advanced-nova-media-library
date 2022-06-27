@@ -22,7 +22,10 @@
       class="gallery-list clearfix"
     >
       <template #item="{ element, index }">
-        <div style="float: left">
+        <div
+          :class="field.type !== 'media'"
+          :style="{ float: field.type == 'media' ? 'left' : 'none' }"
+        >
           <component
             :is="singleComponent"
             class="mb-3 p-3 mr-3"
@@ -383,6 +386,8 @@ export default {
 
 <style lang="scss">
 .gallery {
+  width: 100%;
+  display: block;
   &.editable {
     .gallery-item {
       cursor: grab;

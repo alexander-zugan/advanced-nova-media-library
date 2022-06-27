@@ -1,6 +1,6 @@
 <template>
-  <gallery-item class="gallery-item-file">
-    <div class="gallery-item-info">
+  <GalleryItem class="gallery-item-file">
+    <div class="gallery-item-info px-2 py-2">
       <a
         class="download mr-2"
         :href="image.__media_urls__.__original__"
@@ -14,13 +14,14 @@
       <span class="label">
         {{ image.file_name }}
       </span>
+
       <a
         v-if="isCustomPropertiesEditable"
         class="edit edit--file ml-2"
         href="#"
         @click.prevent="$emit('edit-custom-properties', image)"
       >
-        <Icon type="edit" view-box="0 0 20 20" width="16" height="16" />
+        <Icon type="pencil" view-box="0 0 20 20" width="16" height="16" />
       </a>
       <a
         v-if="removable"
@@ -28,10 +29,10 @@
         href="#"
         @click.prevent="$emit('remove')"
       >
-        <Icon type="delete" view-box="0 0 20 20" width="16" height="16" />
+        <Icon type="trash" view-box="0 0 20 20" width="16" height="16" />
       </a>
     </div>
-  </gallery-item>
+  </GalleryItem>
 </template>
 
 <script>
@@ -44,6 +45,7 @@ export default {
   },
   computed: {
     downloadUrl() {
+      console.log(this.isCustomPropertiesEditable);
       return this.image.id
         ? `/nova-vendor/ebess/advanced-nova-media-library/download/${this.image.id}`
         : null;
