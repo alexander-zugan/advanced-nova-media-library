@@ -19,6 +19,7 @@
     <Draggable
       v-if="images.length > 0"
       v-model="images"
+      item-key="id"
       class="gallery-list clearfix"
       :class="{
         ' flex-wrap flex': field.type !== 'file',
@@ -26,21 +27,38 @@
     >
       <template #item="{ element, index }">
         <div :class="field.type !== 'media'">
-          <component
-            :is="singleComponent"
-            class="mb-3 p-3 mr-3"
-            :key="index"
-            :image="element"
-            :field="field"
-            :editable="editable"
-            :removable="removable || editable"
-            @remove="remove(index)"
-            :is-custom-properties-editable="
-              customProperties && customPropertiesFields.length > 0
-            "
-            @edit-custom-properties="openModal($event)"
-            @crop-start="cropImageQueue.push($event)"
-          />
+          <div v-if="field.type == 'media'">
+            <SingleMedia
+              class="mb-3 p-3 mr-3"
+              :key="index"
+              :image="element"
+              :field="field"
+              :editable="editable"
+              :removable="removable || editable"
+              @remove="remove(index)"
+              :is-custom-properties-editable="
+                customProperties && customPropertiesFields.length > 0
+              "
+              @edit-custom-properties="openModal($event)"
+              @crop-start="cropImageQueue.push($event)"
+            />
+          </div>
+          <div v-else-if="field.type == 'file'">
+            <SingleFile
+              class="mb-3 p-3 mr-3"
+              :key="index"
+              :image="element"
+              :field="field"
+              :editable="editable"
+              :removable="removable || editable"
+              @remove="remove(index)"
+              :is-custom-properties-editable="
+                customProperties && customPropertiesFields.length > 0
+              "
+              @edit-custom-properties="openModal($event)"
+              @crop-start="cropImageQueue.push($event)"
+            />
+          </div>
 
           <CustomProperties
             v-if="
@@ -97,8 +115,8 @@ import Draggable from "vuedraggable";
 export default {
   components: {
     Draggable,
-    SingleMedia,
     SingleFile,
+    SingleMedia,
     CustomProperties,
     Cropper,
     CustomPropertiesModal,

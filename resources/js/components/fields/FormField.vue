@@ -50,7 +50,7 @@ import Vapor from "laravel-vapor";
 import Gallery from "../Gallery";
 import FullWidthField from "../FullWidthField";
 import ExistingMedia from "../ExistingMedia";
-import serialize from "object-to-formdata";
+import { serialize } from "object-to-formdata";
 import get from "lodash/get";
 
 export default {

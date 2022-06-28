@@ -48,6 +48,9 @@
     </div>
     <img :src="src" :alt="image.name" ref="image" class="gallery-image" />
     <div v-if="field.showStatistics" class="statistics mt-1 mb-1">
+      <div v-if="image.name" class="mb-1 truncate">
+        <strong>{{ image.name }}</strong>
+      </div>
       <div v-if="size" class="size">
         <strong>{{ size }}</strong>
       </div>
