@@ -20,12 +20,12 @@
       v-if="images.length > 0"
       v-model="images"
       class="gallery-list clearfix"
+      :class="{
+        ' flex-wrap flex': field.type !== 'file',
+      }"
     >
       <template #item="{ element, index }">
-        <div
-          :class="field.type !== 'media'"
-          :style="{ float: field.type == 'media' ? 'left' : 'none' }"
-        >
+        <div :class="field.type !== 'media'">
           <component
             :is="singleComponent"
             class="mb-3 p-3 mr-3"
@@ -44,6 +44,7 @@
 
           <CustomProperties
             v-if="
+              customPropertiesFields.length > 0 &&
               customPropertiesImageIndex !== null &&
               currentImageId == element.id
             "
@@ -55,9 +56,9 @@
         </div>
       </template>
     </Draggable>
-
     <span v-else-if="!editable" class="mr-3">&mdash;</span>
-
+  </div>
+  <div>
     <span v-if="editable" class="form-file">
       <input
         :id="`__media__${field.attribute}`"
@@ -81,12 +82,6 @@
     <HelpText class="mt-2 text-red-500" v-if="hasError">
       {{ firstError }}
     </HelpText>
-
-    <HelpText
-      class="help-text mt-2"
-      v-if="field.type !== 'media'"
-      v-html="field.helpText"
-    />
   </div>
 </template>
 
@@ -182,7 +177,6 @@ export default {
     },
 
     openModal(image) {
-      console.log(image, image.id);
       let index = image.id;
       this.currentImageId = index;
       this.customPropertiesModalOpen = true;
@@ -277,7 +271,7 @@ export default {
     },
     validateFileSize(file) {
       if (this.field.maxFileSize && file.size / 1024 > this.field.maxFileSize) {
-        this.$toasted.error(
+        Nova.error(
           this.__("Maximum file size is :amount MB", {
             amount: String(this.field.maxFileSize / 1024),
           })
@@ -297,7 +291,7 @@ export default {
         }
       }
 
-      this.$toasted.error(
+      Nova.error(
         this.__("File type must be: :types", {
           types: this.field.allowedFileTypes.join(" / "),
         })

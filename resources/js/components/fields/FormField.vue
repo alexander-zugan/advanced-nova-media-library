@@ -6,7 +6,7 @@
     :show-help-text="showHelpText"
   >
     <template #field>
-      <div :class="{ 'px-8 pt-6': field.fullSize }">
+      <div :class="{ 'px-6 md:px-8 pt-6': field.fullSize }">
         <Gallery
           ref="gallery"
           v-if="hasSetInitialValue"
@@ -24,12 +24,6 @@
         <HelpText class="mt-2 help-text-error" v-if="hasError">
           {{ firstError }}
         </HelpText>
-
-        <HelpText
-          class="help-text mt-2"
-          v-if="showHelpText"
-          v-html="field.helpText"
-        />
 
         <span v-if="field.existingMedia">
           <OutlineButton
@@ -56,7 +50,7 @@ import Vapor from "laravel-vapor";
 import Gallery from "../Gallery";
 import FullWidthField from "../FullWidthField";
 import ExistingMedia from "../ExistingMedia";
-import objectToFormData from "object-to-formdata";
+import serialize from "object-to-formdata";
 import get from "lodash/get";
 
 export default {
@@ -146,7 +140,7 @@ export default {
           formData.append(`__media__[${field}][${index}]`, file.id);
         }
 
-        objectToFormData(
+        serialize(
           {
             [`__media-custom-properties__[${field}][${index}]`]:
               this.getImageCustomProperties(file),

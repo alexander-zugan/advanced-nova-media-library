@@ -2,22 +2,26 @@
   <GalleryItem class="gallery-item-file">
     <div class="gallery-item-info px-2 py-2">
       <a
-        class="download mr-2"
+        class="mr-1 md:mr-2 hover:text-primary-500"
         :href="image.__media_urls__.__original__"
         target="_blank"
       >
         <Icon type="search" view-box="0 0 20 20" width="16" height="16" />
       </a>
-      <a v-if="downloadUrl" class="download mr-2" :href="downloadUrl">
+      <a
+        v-if="downloadUrl"
+        class="mr-2 hover:text-primary-500"
+        :href="downloadUrl"
+      >
         <Icon type="download" view-box="0 0 20 22" width="16" height="16" />
       </a>
-      <span class="label">
+      <span class="label truncate">
         {{ image.file_name }}
       </span>
 
       <a
         v-if="isCustomPropertiesEditable"
-        class="edit edit--file ml-2"
+        class="edit edit--file ml-1 md:ml-2 hover:text-primary-500"
         href="#"
         @click.prevent="$emit('edit-custom-properties', image)"
       >
@@ -25,7 +29,7 @@
       </a>
       <a
         v-if="removable"
-        class="delete ml-2"
+        class="self-end text-red-600 ml-1 md:ml-2 hover:text-red-700"
         href="#"
         @click.prevent="$emit('remove')"
       >
@@ -54,6 +58,9 @@ export default {
 </script>
 
 <style lang="scss">
+$bg-color: #f5f6f7;
+$border-color: #e2e8f0;
+
 .gallery .edit.edit--file {
   position: relative;
   top: auto;
@@ -66,18 +73,15 @@ export default {
 
     .gallery-item-info {
       display: flex;
+      border-radius: 2px;
+      border: 1px solid $bg-color;
 
       .label {
         flex-grow: 1;
       }
 
-      .download {
-        color: var(--primary-dark);
-      }
-
       .delete {
         align-self: flex-end;
-        color: var(--danger);
       }
     }
   }

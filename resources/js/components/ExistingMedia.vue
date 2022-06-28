@@ -5,7 +5,9 @@
       <!-- Modal Content -->
       <div class="flex flex-col p-4 h-full relative w-full">
         <!-- Header bar -->
-        <div class="border-b dark:border-gray-700 pb-3 mb-4 flex items-center">
+        <div
+          class="border-b dark:border-gray-700 border-gray-300 pb-3 mb-4 flex items-center"
+        >
           <!-- Heading -->
           <div class="px-4 self-center">
             <h3>{{ __("Existing Media") }}</h3>
@@ -41,8 +43,8 @@
         </div>
 
         <div
-          class="flex-grow overflow-x-hidden overflow-y-scroll"
-          style="max-height: 79vh"
+          class="flex-grow pt-2 overflow-x-hidden overflow-y-scroll"
+          style="max-height: 75vh"
         >
           <!-- When we have results show them -->
           <div
@@ -69,7 +71,7 @@
 
         <!-- Next page -->
         <div
-          class="flex-shrink border-t dark:border-gray-700 pt-3 mt-4 text-right"
+          class="flex-shrink border-t border-gray-300 dark:border-gray-700 pt-3 mt-4 text-right"
           v-if="showNextPage"
         >
           <DefaultButton type="button" class="ml-auto" @click="nextPage">{{

@@ -11,9 +11,8 @@ export default {
 </script>
 
 <style lang="scss">
-$bg-color-200: rgba(var(--colors-primary-200), 0.4);
-$bg-color: #f9f9f9;
-$border-radius: 10px;
+$bg-color: #f5f6f7;
+$border-color: #e2e8f0;
 
 .gallery {
   &.editable {
@@ -23,13 +22,13 @@ $border-radius: 10px;
   }
 
   .gallery-item {
-    float: left;
+    // float: left;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
-    border-radius: $border-radius;
-    background-color: $bg-color-200;
+    border: 1px solid $border-color;
+    background-color: transparentize($bg-color, 0.2);
 
     .gallery-item-info {
       display: flex;

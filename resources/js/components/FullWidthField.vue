@@ -1,7 +1,7 @@
 <template>
   <FieldWrapper>
-    <div class="py-6">
-      <div class="px-8">
+    <div class="py-6 w-full">
+      <div class="px-6 md:px-8">
         <FormLabel
           :for="field.attribute"
           :class="{

@@ -62,6 +62,8 @@ trait HandlesCustomPropertiesTrait
         // prevent overriding the custom properties set by other processes like generating convesions
         $media->refresh();
 
+        ray($this->customPropertiesFields, $media);
+
         /** @var Field $field */
         foreach ($this->customPropertiesFields as $field) {
 

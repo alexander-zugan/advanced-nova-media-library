@@ -6,7 +6,7 @@
     <div class="gallery-item-info p-3">
       <a
         v-if="downloadUrl"
-        class="icon download"
+        class="icon download hover:text-primary-500"
         :href="downloadUrl"
         title="Download"
       >
@@ -14,7 +14,7 @@
       </a>
       <a
         v-if="removable"
-        class="icon delete"
+        class="icon delete hover:text-primary-500"
         href="#"
         @click.prevent="$emit('remove')"
         title="Remove"
@@ -23,32 +23,31 @@
       </a>
       <a
         v-if="isCustomPropertiesEditable"
-        class="icon edit"
+        class="icon edit hover:text-primary-500"
         href="#"
         @click.prevent="$emit('edit-custom-properties', image)"
         title="Edit custom properties"
       >
         <Icon type="pencil" view-box="0 0 20 20" width="16" height="16" />
       </a>
-      <a class="preview" href="#" @click.prevent="showPreview">
+      <a
+        class="preview hover:text-primary-500"
+        href="#"
+        @click.prevent="showPreview"
+      >
         <Icon type="search" view-box="0 0 20 20" width="30" height="30" />
       </a>
       <a
         v-if="croppable"
-        class="icon crop"
+        class="icon crop hover:text-primary-500"
         href="#"
         @click.prevent="$emit('crop-start', image)"
       >
-        <ScissorsIcon
-          brand="var(--colors-black)"
-          view-box="0 0 20 20"
-          width="16"
-          height="16"
-        />
+        <Icon type="scissors" view-box="0 0 20 20" width="16" height="16" />
       </a>
     </div>
     <img :src="src" :alt="image.name" ref="image" class="gallery-image" />
-    <div v-if="field.showStatistics" class="statistics mt-2 mb-1">
+    <div v-if="field.showStatistics" class="statistics mt-1 mb-1">
       <div v-if="size" class="size">
         <strong>{{ size }}</strong>
       </div>
@@ -59,20 +58,18 @@
         <strong>{{ aspectRatio }}</strong> (<i>{{ ratio }}</i
         >)
       </div>
-    </div>
-    <div v-if="field.showStatistics" class="type">
-      {{ mimeType }}
+      <div class="type">
+        {{ mimeType }}
+      </div>
     </div>
   </GalleryItem>
 </template>
 
 <script>
-import ScissorsIcon from "./icons/Scissors";
 import GalleryItem from "./GalleryItem";
 
 export default {
   components: {
-    ScissorsIcon,
     GalleryItem,
   },
   props: [
@@ -230,10 +227,9 @@ export default {
 </script>
 
 <style lang="scss">
-$bg-color-200: rgba(var(--colors-primary-200));
-$bg-color: #f9f9f9;
+$bg-color: #f5f6f7;
+$border-color: #e2e8f0;
 $item-max-size: 150px;
-$border-radius: 10px;
 
 .gallery {
   .gallery-item-image.gallery-item {
@@ -245,9 +241,9 @@ $border-radius: 10px;
     }
 
     &.show-statistics {
-      padding-bottom: 10px;
-      padding-bottom: 10px;
-      height: #{$item-max-size + 60px};
+      padding-bottom: 6px;
+      padding-bottom: 6px;
+      height: #{$item-max-size + 50px};
     }
 
     .gallery-item-info {
@@ -255,18 +251,14 @@ $border-radius: 10px;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      border: 1px solid $border-color;
       background-color: transparentize($bg-color, 0.2);
-      border-radius: $border-radius;
       position: absolute;
       z-index: 10;
       top: 0;
       bottom: 0;
       left: 0;
       right: 0;
-
-      .preview {
-        color: var(--colors-black);
-      }
 
       .delete {
         right: 10px;
@@ -284,7 +276,6 @@ $border-radius: 10px;
       object-fit: contain;
       display: block;
       max-height: 100%;
-      border-radius: $border-radius;
     }
 
     .statistics,
@@ -292,7 +283,7 @@ $border-radius: 10px;
       // position: absolute;
       left: 0;
       width: 100%;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       line-height: 0.95;
       text-align: center;
     }
@@ -310,7 +301,7 @@ $border-radius: 10px;
     }
 
     .type {
-      top: -20px;
+      margin-top: 5px;
     }
   }
 
@@ -318,7 +309,6 @@ $border-radius: 10px;
     cursor: pointer;
     position: absolute;
     top: 10px;
-    color: rgb(var(--colors-black));
   }
 
   .edit {

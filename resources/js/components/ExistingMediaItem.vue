@@ -1,6 +1,6 @@
 <template>
   <div
-    class="existing-media-item float-left border dark:border-gray-700 group mb-4 mr-4 shadow relative cursor-pointer group hover:scale-105 transition-all"
+    class="existing-media-item border border-gray-200 dark:border-gray-700 group mb-4 mr-4 relative cursor-pointer group hover:scale-105 transition-all"
     style="width: 200px"
     @click.prevent="$emit('select')"
   >
@@ -15,9 +15,9 @@
         <DefaultButton type="button">{{ __("Select") }}</DefaultButton>
       </div>
     </div>
-    <div class="p-3">
+    <div class="p-3 px-2 py-2">
       <h4
-        class="truncate h-4 mb-1 font-bold"
+        class="truncate h-4 mb-1 font-semibold"
         v-if="'name' in item"
         :title="item.name"
       >

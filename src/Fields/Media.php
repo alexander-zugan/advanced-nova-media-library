@@ -162,8 +162,10 @@ class Media extends Field
      */
     protected function fillAttributeFromRequest(NovaRequest $request, $requestAttribute, $model, $attribute)
     {
-        $attr = $request['__media__'] ?? [];
-        $data = $attr[$requestAttribute] ?? [];
+        $key = str_replace($attribute, '__media__.' . $attribute, $requestAttribute);
+        $data = $request[$key] ?? [];
+        // $attr = $request['__media__'] ?? [];
+        // $data = $attr[$requestAttribute] ?? [];
 
         if ($attribute === 'ComputedField') {
             $attribute = call_user_func($this->computedCallback, $model);
@@ -230,7 +232,7 @@ class Media extends Field
                     $media->withResponsiveImages();
                 }
 
-                if (! empty($this->customHeaders)) {
+                if (!empty($this->customHeaders)) {
                     $media->addCustomHeaders($this->customHeaders);
                 }
 
@@ -260,8 +262,8 @@ class Media extends Field
         $remainingIds = collect($data)->filter(function ($value) {
             // New files will come in as UploadedFile objects,
             // whereas Vapor-uploaded files will come in as arrays.
-            return ! $value instanceof UploadedFile
-            && ! is_array($value);
+            return !$value instanceof UploadedFile
+                && !is_array($value);
         });
 
         $medias->pluck('id')->diff($remainingIds)->each(function ($id) use ($medias) {
@@ -317,11 +319,11 @@ class Media extends Field
     {
         $resource->registerMediaCollections();
         $isSingle = collect($resource->mediaCollections)
-                ->where('name', $collectionName)
-                ->first()
-                ->singleFile ?? false;
+            ->where('name', $collectionName)
+            ->first()
+            ->singleFile ?? false;
 
-        $this->withMeta(['multiple' => ! $isSingle]);
+        $this->withMeta(['multiple' => !$isSingle]);
     }
 
     public function serializeMedia(\Spatie\MediaLibrary\MediaCollections\Models\Media $media): array
