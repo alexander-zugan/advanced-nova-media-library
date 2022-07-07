@@ -15,23 +15,24 @@ class AdvancedNovaMediaLibraryServiceProvider extends ServiceProvider
             __DIR__ . '/config/nova-media-library.php' => config_path('nova-media-library.php'),
         ], 'nova-media-library');
 
-        $this->app->booted(function () {
-            $this->routes();
-        });
-
         Nova::serving(function (ServingNova $event) {
-            Nova::script('media-lib-images-field', __DIR__.'/../dist/js/field.js');
+            Nova::script('media-lib-images-field', __DIR__ . '/../dist/js/field.js');
         });
     }
 
-    protected function routes()
+
+    public function register()
     {
-        if ($this->app->routesAreCached()) {
-            return;
-        }
+        $this->registerRoutes();
+    }
+
+    protected function registerRoutes()
+    {
+        if ($this->app->routesAreCached()) return;
 
         Route::middleware(['nova'])
+            ->namespace('Ebess\AdvancedNovaMediaLibrary\Http\Controllers')
             ->prefix('nova-vendor/ebess/advanced-nova-media-library')
-            ->group(__DIR__.'/../routes/api.php');
+            ->group(__DIR__ . '/../routes/api.php');
     }
 }

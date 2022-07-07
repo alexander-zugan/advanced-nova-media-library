@@ -24,6 +24,7 @@ $border-color: #e2e8f0;
   .gallery-item {
     // float: left;
     display: flex;
+    overflow-y: hidden;
     flex-direction: column;
     justify-content: space-between;
     position: relative;

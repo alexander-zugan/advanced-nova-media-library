@@ -193,10 +193,11 @@ class Media extends Field
             ->validate();
 
         return function () use ($request, $data, $attribute, $model) {
+
             $this->handleMedia($request, $model, $attribute, $data);
 
             // fill custom properties for existing media
-            $this->fillCustomPropertiesFromRequest($request, $model, $attribute);
+            // $this->fillCustomPropertiesFromRequest($request, $model, $attribute);
         };
     }
 

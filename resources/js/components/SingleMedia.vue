@@ -276,6 +276,7 @@ $item-max-size: 150px;
     }
 
     .gallery-image {
+      overflow-y: hidden;
       object-fit: contain;
       display: block;
       max-height: 100%;

@@ -2,9 +2,11 @@
 
 namespace Ebess\AdvancedNovaMediaLibrary\Http\Controllers;
 
+use Exception;
+use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
 use Ebess\AdvancedNovaMediaLibrary\Http\Requests\MediaRequest;
 use Ebess\AdvancedNovaMediaLibrary\Http\Resources\MediaResource;
-use Exception;
 
 class MediaController extends Controller
 {
@@ -37,17 +39,59 @@ class MediaController extends Controller
 
             $query->latest();
         }
-        
+
         if (!empty($hideCollections)) {
             if (!is_array($hideCollections)) {
-                $hideCollections = [ $hideCollections ];
+                $hideCollections = [$hideCollections];
             }
-            
+
             $query->whereNotIn('collection_name', $hideCollections);
         }
 
         $results = $query->paginate($perPage);
 
         return MediaResource::collection($results);
+    }
+
+    /**
+     * Updates a MediaItem.
+     *
+     * @param $request
+     * @param $mediaItem
+     * @return Illuminate\Http\Response
+     **/
+    public function updateMediaItem(MediaRequest $request,  $mediaItemId)
+    {
+        $mediaClass = config('media-library.media_model');
+        $mediaItem = $mediaClass::findOrFail($mediaItemId);
+
+        if (!isset($mediaItem)) return response()->json(['error' => 'media_item_not_found'], 400);
+
+        $properties = $request->getCustomProperties();
+
+        $this->fillMediaCustomProperties($mediaItem, $properties);
+
+        // $mediaItem->save();
+        return response()->json(['success' => true], 200);
+    }
+
+    /**
+     * @param \Spatie\MediaLibrary\Models\Media $media
+     */
+    private function fillMediaCustomProperties($media, $properties)
+    {
+        // prevent overriding the custom properties set by other processes like generating conversions
+        $media->refresh();
+
+        foreach ($properties as $key => $value) {
+            $mm_tag = Str::startsWith($key, 'mm_tag_');
+            if ($mm_tag) {
+                $media->$key = $value;
+            } else {
+                $media->setCustomProperty($key, $value);
+            }
+        }
+
+        $media->save();
     }
 }

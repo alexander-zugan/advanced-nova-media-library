@@ -2,6 +2,8 @@
 
 namespace Ebess\AdvancedNovaMediaLibrary\Http\Requests;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Illuminate\Foundation\Http\FormRequest;
 
 class MediaRequest extends FormRequest
@@ -27,5 +29,15 @@ class MediaRequest extends FormRequest
             'page' => 'sometimes|nullable|numeric',
             'per_page' => 'sometimes|nullable|numeric'
         ];
+    }
+
+    public function getCustomProperties()
+    {
+        $keys = ['custom_properties'];
+        foreach ($this->all() as $key => $value) {
+            if (Str::startsWith($key, 'custom_properties->')) $keys[] = $key;
+        }
+        $data = $this->only($keys);
+        return Arr::get($data, 'custom_properties');
     }
 }

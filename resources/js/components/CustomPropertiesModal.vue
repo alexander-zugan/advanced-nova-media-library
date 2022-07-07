@@ -49,6 +49,8 @@ export default {
       type: Array,
       required: true,
     },
+    newItem: Object,
+    mediaModel: Object,
   },
 
   methods: {
@@ -56,12 +58,40 @@ export default {
       this.$emit("close");
     },
 
-    handleUpdate() {
+    handleCreate() {
       let formData = new FormData();
-
       this.fields.forEach((field) => field.fill(formData));
+      this.$emit("create", formData);
+    },
 
-      this.$emit("update", formData);
+    handleUpdate() {
+      if (this.mediaModel.id == undefined) {
+        return this.handleCreate();
+      }
+
+      this.fields.forEach((field) => {
+        const formData = new FormData();
+        field.fill(formData);
+
+        const values = Array.from(formData.values());
+
+        if (field.component === "trix-field") {
+          this.newItem[field.attribute] = values[0];
+          return;
+        }
+
+        // Is array
+        const firstKey = Array.from(formData.keys())[0];
+        if (firstKey && firstKey.endsWith("]")) {
+          this.newItem[field.attribute] = values || [];
+        } else {
+          if (values.length === 0) this.newItem[field.attribute] = void 0;
+          if (values.length === 1) this.newItem[field.attribute] = values[0];
+          if (values.length > 1) this.newItem[field.attribute] = values;
+        }
+      });
+
+      this.$emit("update", this.newItem);
     },
   },
 };
