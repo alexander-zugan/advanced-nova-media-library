@@ -37,7 +37,7 @@ export default {
       org_image: this.modelValue,
       image: JSON.parse(JSON.stringify(this.modelValue)),
       newItem: {
-        media_id: null,
+        media_id: this.modelValue.id,
       },
     };
   },
@@ -90,13 +90,17 @@ export default {
     handleUpdate(newItem) {
       let itemData = this.newItemData;
 
-      Object.entries(itemData.customProperties).forEach((property) => {
+      if (itemData.media_id !== null) {
+        itemData.customProperties.media_id = itemData.media_id;
+      }
+
+      Object.entries(newItem).forEach((property) => {
         const [propertyKey, propertyValue] = property;
         this.setProperty(propertyKey, propertyValue);
       });
 
       if (this.image.id) {
-        this.updateMediaItem(this.image);
+        this.updateMediaItem(newItem);
       }
 
       this.$emit("update:modelValue", this.image);
@@ -104,11 +108,12 @@ export default {
       this.handleClose();
     },
 
-    async updateMediaItem(mediaItem) {
+    async updateMediaItem(custom_properties) {
+      this.loading = true;
       try {
         this.uploading = true;
         this.errors = {};
-        await api.update(mediaItem.id, mediaItem);
+        await api.updateProperties(this.image, custom_properties);
         this.uploading = false;
         this.customPropertiesModalOpen = false;
         Nova.success(this.__("Media item updated"));
@@ -117,6 +122,7 @@ export default {
         this.uploading = false;
         this.handleErrors(e);
       }
+      this.loading = false;
     },
 
     handleErrors(res) {

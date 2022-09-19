@@ -8,5 +8,5 @@ Route::get('/download/{media}', [DownloadMediaController::class, 'show']);
 
 Route::get('/media', [MediaController::class, 'index']);
 
-
 Route::post('/update-item/{mediaItem}', [MediaController::class, 'updateMediaItem']);
+Route::post('/update-properties/{resource}', [MediaController::class, 'updateMediaItemProperties']);

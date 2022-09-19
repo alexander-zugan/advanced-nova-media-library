@@ -53,6 +53,20 @@ class MediaController extends Controller
         return MediaResource::collection($results);
     }
 
+    public function updateMediaItemProperties(MediaRequest $request, $mediaItemId)
+    {
+        $custom_properties = $request->_mediaProperties;
+
+        $mediaClass = config('media-library.media_model');
+        $mediaItem = $mediaClass::findOrFail($mediaItemId);
+
+        if (!isset($mediaItem)) return response()->json(['error' => 'media_item_not_found'], 400);
+
+        $this->fillMediaCustomProperties($mediaItem, $custom_properties);
+
+        return response()->json(['success' => true], 200);
+    }
+
     /**
      * Updates a MediaItem.
      *
