@@ -36,6 +36,7 @@
               :editable="editable"
               :removable="removable || editable"
               @remove="remove(index)"
+              @copy="$emit('copy', item);"
               :is-custom-properties-editable="
                 customProperties && customPropertiesFields.length > 0
               "

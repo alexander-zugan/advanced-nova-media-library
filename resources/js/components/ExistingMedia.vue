@@ -1,6 +1,12 @@
 <template>
   <!-- Modal -->
-  <Modal :show="open" maxWidth="" class="px-4">
+  <Modal
+    :show="open"
+    maxWidth="5xl"
+    size="5xl"
+    class="px-4"
+    @close-via-escape="$emit('close')"
+  >
     <Card class="overflow-hidden">
       <!-- Modal Content -->
       <div class="flex flex-col p-4 h-full relative w-full">
@@ -57,6 +63,10 @@
               :item="item"
               @select="
                 $emit('select', item);
+                close();
+              "
+              @copy="
+                $emit('copy', item);
                 close();
               "
             ></ExistingMediaItem>

@@ -12,6 +12,14 @@
       >
         <Icon type="download" view-box="0 0 20 22" width="16" height="16" />
       </a>
+      <div
+        v-if="downloadUrl"
+        class="icon copy hover:text-primary-500"
+        @click.prevent="copyUrl"
+        title="Copy"
+      >
+        <Icon type="clipboard" view-box="0 0 20 22" width="16" height="16" />
+      </div>
       <a
         v-if="removable"
         class="icon delete hover:text-primary-500"
@@ -138,6 +146,12 @@ export default {
         setTimeout(this.calculateStatistics);
       }
     },
+    copyUrl() {
+      let image_src = this.src;
+      navigator.clipboard.writeText(image_src);
+      Nova.success("Copied to clipboard");
+    },
+
     getVideoThumbnail(path, secs = 0) {
       const video = document.createElement("video");
       video.onloadedmetadata = () => {
@@ -321,6 +335,10 @@ $item-max-size: 150px;
 
   .download {
     left: 10px;
+  }
+
+  .copy {
+    left: 30px;
   }
 }
 </style>

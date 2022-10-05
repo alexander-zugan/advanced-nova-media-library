@@ -19,6 +19,7 @@
           :uploads-to-vapor="field.uploadsToVapor"
           :has-error="hasError"
           :first-error="firstError"
+          @copy="copyUrl"
         />
 
         <HelpText class="mt-2 help-text-error" v-if="hasError">
@@ -37,6 +38,7 @@
             :open="existingMediaOpen"
             @close="existingMediaOpen = false"
             @select="addExistingItem"
+            @copy="copyUrl"
           />
         </span>
       </div>
@@ -162,6 +164,19 @@ export default {
      */
     handleChange(value) {
       this.value = value;
+    },
+
+    copyUrl(image) {
+      let image_src = false;
+      if (image.__media_urls__.form) {
+        image_src = image.__media_urls__.form;
+      } else if (image.__media_urls__.detailView) {
+        image_src = image.__media_urls__.detailView;
+      } else {
+        image_src = image.__media_urls__.__original__;
+      }
+      navigator.clipboard.writeText(image_src);
+      Nova.success("Copied to clipboard");
     },
 
     addExistingItem(item) {

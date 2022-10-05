@@ -2,7 +2,6 @@
   <div
     class="existing-media-item border border-gray-200 dark:border-gray-700 group mb-4 mr-4 relative cursor-pointer group hover:scale-105 transition-all"
     style="width: 200px"
-    @click.prevent="$emit('select')"
   >
     <div class="overflow-hidden relative">
       <img
@@ -11,8 +10,15 @@
         class="block w-full"
         style="height: 200px; object-fit: contain"
       />
+       <div class="absolute top-0 left-0 mt-3 ml-3 hidden group-hover:block">
+        <OutlineButton type="button" @click.prevent="$emit('copy')">{{
+          __("Copy")
+        }}</OutlineButton>
+      </div>
       <div class="absolute top-0 right-0 mt-3 mr-3 hidden group-hover:block">
-        <DefaultButton type="button">{{ __("Select") }}</DefaultButton>
+        <DefaultButton @click.prevent="$emit('select')" type="button">{{
+          __("Select")
+        }}</DefaultButton>
       </div>
     </div>
     <div class="p-3 px-2 py-2">
