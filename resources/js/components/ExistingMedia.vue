@@ -2,7 +2,7 @@
   <!-- Modal -->
   <Modal
     :show="open"
-    maxWidth="5xl"
+    maxwidth="5xl"
     size="5xl"
     class="px-4"
     @close-via-escape="$emit('close')"
@@ -54,7 +54,7 @@
         >
           <!-- When we have results show them -->
           <div
-            class="my-4 flex justify-center flex-wrap"
+            class="my-4 md:grid grid-cols-4 gap-4 flex-wrap"
             v-if="items.length > 0"
           >
             <ExistingMediaItem

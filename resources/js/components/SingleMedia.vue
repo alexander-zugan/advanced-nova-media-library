@@ -54,7 +54,12 @@
         <Icon type="scissors" view-box="0 0 20 20" width="16" height="16" />
       </a>
     </div>
-    <img :src="src" :alt="image.name" ref="image" class="gallery-image" />
+    <img
+      :src="src"
+      :alt="image.name"
+      ref="image"
+      class="flex-1 gallery-image"
+    />
     <div v-if="field.showStatistics" class="statistics mt-1 mb-1">
       <div v-if="image.name" class="mb-1 truncate">
         <strong>{{ image.name }}</strong>
@@ -291,7 +296,7 @@ $item-max-size: 150px;
 
     .gallery-image {
       overflow-y: hidden;
-      object-fit: contain;
+      object-fit: cover;
       display: block;
       max-height: 100%;
     }
