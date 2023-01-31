@@ -29,7 +29,7 @@
         <span v-if="field.existingMedia">
           <OutlineButton
             type="button"
-            class="mt-2"
+            class="ml-2 mt-2"
             @click.prevent="existingMediaOpen = true"
           >
             {{ openExistingMediaLabel }}
@@ -41,13 +41,13 @@
             @copy="copyUrl"
           />
         </span>
-        <help-text
-          class="error-text mt-2 text-danger"
-          v-if="showErrors && hasError"
-        >
-          {{ firstError }}
-        </help-text>
       </div>
+      <help-text
+        class="error-text mt-2 text-danger"
+        v-if="showErrors && hasError"
+      >
+        {{ firstError }}
+      </help-text>
     </template>
   </component>
 </template>

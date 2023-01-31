@@ -77,7 +77,7 @@
     </Draggable>
     <span v-else-if="!editable" class="mr-3">&mdash;</span>
   </div>
-  <div>
+
     <span v-if="editable" class="form-file">
       <input
         :id="`__media__${field.attribute}`"
@@ -101,7 +101,6 @@
     <HelpText class="mt-2 text-red-500" v-if="hasError">
       {{ firstError }}
     </HelpText>
-  </div>
 </template>
 
 <script>
