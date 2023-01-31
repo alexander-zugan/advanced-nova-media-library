@@ -192,13 +192,22 @@ Images::make('Gallery')->croppable(false);
 
 You can set all configurations like ratio e.g. as following: 
 ```php
-Images::make('Gallery')->croppingConfigs(['ratio' => 4/3]);
+Images::make('Gallery')->croppingConfigs(['aspectRatio' => 4/3]);
 ```
 Available cropping configuration, see https://github.com/timtnleeProject/vuejs-clipper#clipper-basic.
 
 It is possible to enforce cropping on upload, for example to ensure the image has the set aspect ratio:
 ```php
 Images::make('Gallery')->mustCrop();
+```
+
+### Disabling cropping by default
+
+By default, the cropping feature is enabled. To disable it by default for all images set `default-croppable` in `config/nova-media-library.php` to `false`:
+```php
+return [
+    'default-croppable' => false,
+];
 ```
 
 ## Custom properties

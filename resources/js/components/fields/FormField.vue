@@ -41,6 +41,12 @@
             @copy="copyUrl"
           />
         </span>
+        <help-text
+          class="error-text mt-2 text-danger"
+          v-if="showErrors && hasError"
+        >
+          {{ firstError }}
+        </help-text>
       </div>
     </template>
   </component>
