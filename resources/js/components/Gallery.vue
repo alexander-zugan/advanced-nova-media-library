@@ -36,7 +36,7 @@
               :editable="editable"
               :removable="removable || editable"
               @remove="remove(index)"
-              @copy="$emit('copy', item);"
+              @copy="$emit('copy', item)"
               :is-custom-properties-editable="
                 customProperties && customPropertiesFields.length > 0
               "
@@ -311,8 +311,9 @@ export default {
       }
 
       Nova.error(
-        this.__("File type must be: :types", {
+        this.__("File type must be: :types and is :type", {
           types: this.field.allowedFileTypes.join(" / "),
+          type: file.type,
         })
       );
       return false;
