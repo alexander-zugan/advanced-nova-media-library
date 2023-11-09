@@ -78,29 +78,25 @@
     <span v-else-if="!editable" class="mr-3">&mdash;</span>
   </div>
 
-    <span v-if="editable" class="form-file">
-      <input
-        :id="`__media__${field.attribute}`"
-        :multiple="multiple"
-        ref="file"
-        class="form-file-input"
-        type="file"
-        :disabled="uploading"
-        @change="add"
-      />
-      <label :for="`__media__${field.attribute}`" class="">
-        <DefaultButton type="button" @click.prevent="focusFileInput">
-          <template v-if="uploading"
-            >{{ __("Uploading") }} ({{ uploadProgress }}%)</template
-          >
-          <template v-else>{{ label }}</template>
-        </DefaultButton>
-      </label>
-    </span>
-
-    <HelpText class="mt-2 text-red-500" v-if="hasError">
-      {{ firstError }}
-    </HelpText>
+  <span v-if="editable" class="form-file">
+    <input
+      :id="`__media__${field.attribute}`"
+      :multiple="multiple"
+      ref="file"
+      class="form-file-input"
+      type="file"
+      :disabled="uploading"
+      @change="add"
+    />
+    <label :for="`__media__${field.attribute}`" class="">
+      <DefaultButton type="button" @click.prevent="focusFileInput">
+        <template v-if="uploading"
+          >{{ __("Uploading") }} ({{ uploadProgress }}%)</template
+        >
+        <template v-else>{{ label }}</template>
+      </DefaultButton>
+    </label>
+  </span>
 </template>
 
 <script>

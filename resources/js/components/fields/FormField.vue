@@ -17,14 +17,8 @@
           :field="field"
           :multiple="field.multiple"
           :uploads-to-vapor="field.uploadsToVapor"
-          :has-error="hasError"
-          :first-error="firstError"
           @copy="copyUrl"
         />
-
-        <HelpText class="mt-2 help-text-error" v-if="hasError">
-          {{ firstError }}
-        </HelpText>
 
         <span v-if="field.existingMedia">
           <OutlineButton
@@ -42,12 +36,6 @@
           />
         </span>
       </div>
-      <help-text
-        class="error-text mt-2 text-danger"
-        v-if="showErrors && hasError"
-      >
-        {{ firstError }}
-      </help-text>
     </template>
   </component>
 </template>
