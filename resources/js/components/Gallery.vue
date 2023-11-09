@@ -97,10 +97,6 @@
       </DefaultButton>
     </label>
   </span>
-
-  <HelpText class="mt-2 text-red-500" v-if="hasError">
-    {{ firstError }}
-  </HelpText>
 </template>
 
 <script>
