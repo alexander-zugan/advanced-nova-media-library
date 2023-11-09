@@ -2,12 +2,13 @@
 
 namespace Ebess\AdvancedNovaMediaLibrary\Fields;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Laravel\Nova\Fields\Field;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Support\Collection;
-use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -118,9 +119,12 @@ class Media extends Field
      *
      * @return $this
      */
-    public function setMaxFileSize(int $maxSize)
+    public function setMaxFileSize(int $maxFileSize = null)
     {
-        return $this->withMeta(['maxFileSize' => $maxSize]);
+        if (!$maxFileSize) {
+            $maxFileSize = config('media-library.max_file_size') / 1024;
+        }
+        return $this->withMeta(['maxFileSize' => $maxFileSize]);
     }
 
     /**
@@ -229,7 +233,6 @@ class Media extends Field
 
                     $fileName = $file->getClientOriginalName();
                     $fileExtension = $file->getClientOriginalExtension();
-
                 } else {
                     $media = $this->makeMediaFromVaporUpload($file, $model);
 
@@ -292,6 +295,10 @@ class Media extends Field
     public function resolve($resource, $attribute = null)
     {
         $collectionName = $attribute ?? $this->attribute;
+
+        if (!Arr::has($this->meta, 'maxFileSize')) {
+            $this->setMaxFileSize();
+        }
 
         if ($collectionName === 'ComputedField') {
             $collectionName = call_user_func($this->computedCallback, $resource);
